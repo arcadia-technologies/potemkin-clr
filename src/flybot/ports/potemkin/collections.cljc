@@ -17,7 +17,8 @@
 
 (defn throw-arity [actual]
   `(throw
-     (RuntimeException.
+     (  #?(:clj RuntimeException.
+           :cljr Exception.)
        ~(str "Wrong number of args (" actual ")"))))
 
 (defmacro compile-if [test then else]
